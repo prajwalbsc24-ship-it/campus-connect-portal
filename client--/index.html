@@ -1,13 +1,485 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>client--</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Campus Connect Portal</title>
+
+    <!-- CSS is inside src folder -->
+    <link rel="stylesheet" href="./src/style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <div class="logo-section">
+
+            <div class="rv-logo">
+                RV
+            </div>
+
+            <div>
+
+                <h2>RV UNIVERSITY®</h2>
+
+                <p>
+                    School of Computer Science & Engineering
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="header-buttons">
+
+            <button
+                class="login-btn"
+                onclick="showLogin()">
+                Login
+            </button>
+
+
+            <button
+                class="register-btn"
+                onclick="showRegister()">
+                Register
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ================= HERO SECTION ================= -->
+
+    <section class="hero">
+
+        <div class="course-tag">
+
+            CS3301 - FULL STACK DEVELOPMENT
+
+        </div>
+
+
+        <h1>
+            CAMPUS CONNECT PORTAL
+        </h1>
+
+
+        <p>
+
+            Connecting Students, Faculty, and Administrators
+            on a Single Digital Platform.
+
+        </p>
+
+
+        <button
+            class="explore-btn"
+            onclick="showRoles()">
+
+            Explore User Portals →
+
+        </button>
+
+    </section>
+
+
+
+    <!-- ================= HIGHLIGHTS ================= -->
+
+    <section class="highlights">
+
+        <h2>
+            Campus Life & Portal Highlights
+        </h2>
+
+
+        <p class="subtitle">
+
+            Experience academic management simplified
+            through modern technology.
+
+        </p>
+
+
+        <div class="feature-box">
+
+            <div class="campus-icon">
+                🏫
+            </div>
+
+
+            <h3>
+                Modern University Infrastructure
+            </h3>
+
+
+            <p>
+
+                A single digital platform connecting
+                students, faculty and administrators.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= PORTALS ================= -->
+
+    <section
+        id="roles"
+        class="roles-section">
+
+
+        <h2>
+            Choose Your Portal View
+        </h2>
+
+
+        <div class="portal-container">
+
+
+            <!-- STUDENT PORTAL -->
+
+            <div class="portal-card">
+
+                <div class="portal-icon">
+                    👨‍🎓
+                </div>
+
+
+                <h3>
+                    Student Portal
+                </h3>
+
+
+                <ul>
+
+                    <li>
+                        View Notices & Events
+                    </li>
+
+                    <li>
+                        Submit Assignments
+                    </li>
+
+                    <li>
+                        Track Attendance
+                    </li>
+
+                    <li>
+                        Update Profile
+                    </li>
+
+                </ul>
+
+
+                <button
+                    onclick="openPortal('student')">
+
+                    Access Student View
+
+                </button>
+
+            </div>
+
+
+
+            <!-- FACULTY PORTAL -->
+
+            <div class="portal-card">
+
+                <div class="portal-icon">
+                    👩‍🏫
+                </div>
+
+
+                <h3>
+                    Faculty Portal
+                </h3>
+
+
+                <ul>
+
+                    <li>
+                        Post Notices & Events
+                    </li>
+
+                    <li>
+                        Create Assignments
+                    </li>
+
+                    <li>
+                        Mark Attendance
+                    </li>
+
+                    <li>
+                        View Submissions
+                    </li>
+
+                </ul>
+
+
+                <button
+                    onclick="openPortal('faculty')">
+
+                    Access Faculty View
+
+                </button>
+
+            </div>
+
+
+
+            <!-- ADMIN PORTAL -->
+
+            <div class="portal-card">
+
+                <div class="portal-icon">
+                    🛡️
+                </div>
+
+
+                <h3>
+                    Admin Portal
+                </h3>
+
+
+                <ul>
+
+                    <li>
+                        Manage Users
+                    </li>
+
+                    <li>
+                        Manage Notices & Events
+                    </li>
+
+                    <li>
+                        View System Reports
+                    </li>
+
+                    <li>
+                        System Settings
+                    </li>
+
+                </ul>
+
+
+                <button
+                    onclick="openPortal('admin')">
+
+                    Access Admin View
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= LOGIN / REGISTER FORM ================= -->
+
+    <section
+        id="form-section"
+        class="form-section hidden">
+
+
+        <div class="form-box">
+
+
+            <button
+                class="close-btn"
+                onclick="closeForm()">
+
+                ✕
+
+            </button>
+
+
+            <h2 id="form-title">
+                Login
+            </h2>
+
+
+            <p id="form-message">
+
+                Enter your email and password
+                to continue.
+
+            </p>
+
+
+            <form
+                onsubmit="handleForm(event)">
+
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter Email"
+                    required
+                >
+
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter Password"
+                    required
+                >
+
+
+                <button
+                    type="submit"
+                    class="submit-btn">
+
+                    <span id="submit-text">
+                        Login
+                    </span>
+
+                </button>
+
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= DASHBOARD ================= -->
+
+    <section
+        id="dashboard"
+        class="dashboard hidden">
+
+
+        <div class="dashboard-box">
+
+
+            <h2 id="dashboard-title">
+                Welcome
+            </h2>
+
+
+            <p id="dashboard-text">
+                You are logged in.
+            </p>
+
+
+            <div class="dashboard-cards">
+
+
+                <div class="dashboard-card">
+
+                    <span>
+                        📢
+                    </span>
+
+                    <h3>
+                        Notices
+                    </h3>
+
+                    <p>
+                        View latest campus notices.
+                    </p>
+
+                </div>
+
+
+
+                <div class="dashboard-card">
+
+                    <span>
+                        📅
+                    </span>
+
+                    <h3>
+                        Events
+                    </h3>
+
+                    <p>
+                        Check upcoming campus events.
+                    </p>
+
+                </div>
+
+
+
+                <div class="dashboard-card">
+
+                    <span>
+                        👤
+                    </span>
+
+                    <h3>
+                        Profile
+                    </h3>
+
+                    <p>
+                        Manage your profile.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+            <button
+                class="logout-btn"
+                onclick="logout()">
+
+                Logout
+
+            </button>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Campus Connect Portal | RV University
+        </p>
+
+    </footer>
+
+
+
+    <!-- JavaScript is inside src folder -->
+
+    <script src="./src/script.js"></script>
+
+
+</body>
+
 </html>
